@@ -53,6 +53,12 @@ angular.module('Firestitch.angular-counter', []).directive('fsCounter', ['$timeo
             setValue = function(val) {
                 var parsedVal = parseInt(val);
                 if (!isNaN(parsedVal)) {
+                    if(parsedVal % step!=0) {
+                      while(parsedVal % step!=0) {
+                          parsedVal++;
+                      }
+                        return parsedVal;
+                    }
                     if (min !== undefined && min > parsedVal) {
                         parsedVal = min;
                         return parsedVal;
